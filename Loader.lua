@@ -1508,7 +1508,7 @@ utility.instance_new = function(type, properties)
 })
 
         if fade_enabled then
-            tween = utility.new_connection(RunService.Heartbeat, function(delta_time) --// credits to Xander
+            tween = utility.new_connection(RunService.RenderStepped, function(delta_time) --// credits to Xander
                 total_time += delta_time
                 beam.Transparency = NumberSequence.new(
                     TweenService:GetValue((total_time / fade_duration), Enum.EasingStyle.Quad, Enum.EasingDirection.In)
@@ -2088,7 +2088,7 @@ for _, v in pairs(nigga["CFrameVisualize"]:GetChildren()) do
     v.Anchored = false
 end
 
-game:GetService('RunService').Heartbeat:Connect(LPH_JIT(function()
+game:GetService('RunService').RenderStepped:Connect(LPH_JIT(function()
     if TargetAimbot.CSync.Enabled then
         nigga["CFrameVisualize"].Parent = IgnoreFolder
     else
@@ -2704,7 +2704,7 @@ end
 
 
 
-RunService.Heartbeat:Connect(LPH_JIT(function()
+RunService.RenderStepped:Connect(LPH_JIT(function()
     if Psalms.Tech.Camera and TargetPlr and TargetPlr.Character and Psalms.Tech.SelectedPart then
         if TargetPlr.Character[Psalms.Tech.SelectedPart] then
 
@@ -2869,7 +2869,7 @@ end)
 tool_activated(LocalPlayer.Character)
 
 
-RunService.Heartbeat:Connect(LPH_JIT(function()
+RunService.RenderStepped:Connect(LPH_JIT(function()
    updateBreatheEffect()
 
  if Psalms.Tech.cframespeedtoggle and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
@@ -3185,7 +3185,7 @@ end
     return closestPlayer
 end
 
-RunService.Heartbeat:Connect(LPH_JIT(function()
+RunService.RenderStepped:Connect(LPH_JIT(function()
     if Psalms.Tech.SilentMode then
         TargetPlr = findClosestPlayer()
         if TargetPlr and TargetPlr.Character then
@@ -4008,7 +4008,7 @@ end
 
 local PussyTime = 0
 
-RunService.Heartbeat:Connect(function(DeltaTime)
+RunService.RenderStepped:Connect(function(DeltaTime)
     PussyTime = PussyTime + DeltaTime
     
     if PussyTime >= 0.1 and TargBindEnabled then
@@ -5197,7 +5197,7 @@ Dog11:Button({
             end
         end)
 
-        RunService.Heartbeat:Connect(function()
+        RunService.RenderStepped:Connect(function()
     if LocalPlayer.Character then
         local HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
         if HumanoidRootPart then
@@ -5306,7 +5306,7 @@ niga2 = state
 		for i = 1, speeds do
 			spawn(function()
 
-				local hb = game:GetService("RunService").Heartbeat	
+				local hb = game:GetService("RunService").RenderStepped	
 
 
 				tpwalking = true
