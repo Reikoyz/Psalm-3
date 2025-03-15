@@ -3126,7 +3126,7 @@ spawn(function()
     while true do
         gradient.Rotation = gradient.Rotation + RotateThisDick
         UpdateStrokeColor()
-        task.wait(0.01)
+        game:GetService('RunService').RenderStepped:Wait()
     end
 end)
 
