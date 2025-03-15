@@ -2495,8 +2495,8 @@ local updatePredictionValue = LPH_NO_VIRTUALIZE(function()
             local function gePr(fa, ad) 
     return fa * math.log(pg + 1) + ad 
 end
-Psalms.Tech.HorizontalPrediction = gePr(0.105, -0.342665)
-Psalms.Tech.VerticalPrediction = gePr(0.1, -0.3405)
+Psalms.Tech.HorizontalPrediction = gePr(0, 0)
+Psalms.Tech.VerticalPrediction = gePr(0, 0)
         elseif mo == "Calculate" then
             local calcValue = calculate(pg)
             Psalms.Tech.HorizontalPrediction, Psalms.Tech.VerticalPrediction = calcValue, calcValue
@@ -6014,4 +6014,4 @@ RunService.RenderStepped:Connect(function()
             end
         end
     end
-end)
+end) 
