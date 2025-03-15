@@ -97,7 +97,6 @@ local Psalms = {
         CamPrediction1 = 0.13448922,
         CamPrediction2 = 0.13448922,
         SilentMode = false, 
-        smoothness = 0.9,
         speedvalue = 1,
         MacroSpeed = 0.1,
         AntiCurve = true,
@@ -1066,7 +1065,6 @@ end)
 
 
 
-local TweenService = game:GetService("TweenService")
 
 local  HitChams = LPH_NO_VIRTUALIZE(function(Player)
     if not TargetAimbot.HitChams then return end
@@ -1139,7 +1137,6 @@ local  HitChams = LPH_NO_VIRTUALIZE(function(Player)
 
         for _, BodyPart in ipairs(Cloned:GetChildren()) do
             if BodyPart:IsA("BasePart") then
-                local tween = TweenService:Create(BodyPart, tweenInfo, { Transparency = 1 })
                 tween:Play()
             end
         end
@@ -1194,7 +1191,6 @@ local HitChamsSkeleton = LPH_NO_VIRTUALIZE(function(Player)
                 line.Parent = workspace
 
                 local tweenInfo = TweenInfo.new(TargetAimbot.HitChamsDuration / 0.2,  Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-                local tween = TweenService:Create(line, tweenInfo, {Transparency = 1})
                 tween:Play()
 
                 table.insert(lines, line)
@@ -1511,7 +1507,6 @@ utility.instance_new = function(type, properties)
             tween = utility.new_connection(RunService.RenderStepped, function(delta_time) --// credits to Xander
                 total_time += delta_time
                 beam.Transparency = NumberSequence.new(
-                    TweenService:GetValue((total_time / fade_duration), Enum.EasingStyle.Quad, Enum.EasingDirection.In)
                 )
             end)
         end
@@ -2734,9 +2729,9 @@ if Psalms.Tech.CamWallCheck and BehindWall(TargetPlr) then
                 return
             end
 
-            Camera.CFrame = Camera.CFrame:Lerp(
+            Camera.CFrame = Camera.CFrame:(
                 CFrame.new(Camera.CFrame.Position, Psalms.Tech.targetPosition), 
-                Psalms.Tech.smoothness or 0.1, 
+                0 or 0.1, 
                 Enum.EasingStyle[Psalms.Tech.easingStyle], 
                 Enum.EasingDirection[Psalms.Tech.easingDirection]
             )
@@ -4206,9 +4201,9 @@ Flag = "Cam Resolver",
 Bumt:Textbox({
     Name = "Camera Smoothness",
 Flag = "Cam Smoothness",
-    Default = tostring(Psalms.Tech.smoothness),
+    Default = tostring(0),
     Callback = function(a)
-        Psalms.Tech.smoothness = tonumber(a)
+        0 = tonumber(a)
     end
 })
 
